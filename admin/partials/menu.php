@@ -1,3 +1,5 @@
+<?php include( $_SERVER['DOCUMENT_ROOT']."/config/constants.php" );?>
+
 <html>
     <head>
         <title>Food Order Management Website</title>

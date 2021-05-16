@@ -1,4 +1,4 @@
-<?php include 'partials/menu.php'; ?>
+<?php include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/menu.php" ); ?>
 
         <!-- Main Content Section-->
             <div class ="main-content">
@@ -6,7 +6,18 @@
                     <h1>Manage Admin</h1>
                    <br>
                    <br>
-                        <a href="#" class="btn-primary">Add Admin</a>
+
+                   <?php 
+                        $message = isset( $_SESSION['add'] ) ?  $_SESSION['add'] : '';
+                        echo $message;
+                        /**
+                         * Remove Session
+                         */
+                        unset( $_SESSION['add'] );
+                   ?>
+                   <br>
+                   <br>
+                        <a href="add-admin.php" class="btn-primary">Add Admin</a>
                     <br /><br /><br />
 
                     <table class="tbl-full">
@@ -16,15 +27,32 @@
                             <th>Username</th>
                             <th>Actions</th>
                         </tr>
-                        <tr>
-                            <td>Dummy 1</td>
-                            <td>Dummy 2</td>
-                            <td>Dummy 3</td>
-                            <td>
-                                <a href="#" class="btn-secondary">Update Admin</a>
-                                <a href="#" class="btn-danger">Delete Admin</a>
-                            </td>
-                        </tr>
+
+                        <?php
+                            $sql = "SELECT * FROM `resto_admin`";
+                            $res = mysqli_query($conn, $sql);
+                            if( $res ) {
+                                
+                                while( $rows = mysqli_fetch_assoc($res) ) {
+                                    $id = $rows['ID'];
+                                    $fullname = $rows['full_name'];
+                                    $username = $rows['user_name'];
+
+                                    ?>
+                                         <tr>
+                                            <td><?php echo $id; ?></td>
+                                            <td><?php echo $fullname; ?></td>
+                                            <td><?php echo $username; ?></td>
+                                            <td>
+                                                <a href="#" class="btn-secondary">Update Admin</a>
+                                                <a href="#" class="btn-danger">Delete Admin</a>
+                                            <td/>
+                                        </tr>
+                                    <?php
+                                }
+
+                            }
+                        ?>
                     </table>
                 </div>
             </div>
