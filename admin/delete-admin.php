@@ -12,9 +12,9 @@ $sql = "DELETE FROM resto_admin WHERE ID = {$id}";
 $res = mysqli_query($conn, $sql);
 
 if( $res ) {
-    $_SESSION['delete'] = 'Admin Deleted Successfully';
+    $_SESSION['delete'] = "<div class='success'>Admin Deleted Successfully</div>";
 } else {
-    $_SESSION['delete'] = 'Failed To Delete, Please Try Again Later';
+    $_SESSION['delete'] = "<div class='error'>Failed To Delete, Please Try Again Later</div>";
 }
 
 /**

@@ -11,6 +11,7 @@
                         $sl = 1;
                         $message = isset( $_SESSION['add'] ) ?  $_SESSION['add'] : '';
                         echo $message;
+
                         /**
                          * Remove Session
                          */
@@ -18,6 +19,10 @@
 
                         $delete = isset( $_SESSION['delete'] ) ? $_SESSION['delete'] : '';
                         echo $delete;
+
+                        /**
+                         * Remove Session
+                         */
                         unset( $_SESSION['delete'] );
                    ?>
                    <br>
