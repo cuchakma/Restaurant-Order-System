@@ -24,6 +24,15 @@
                          * Remove Session
                          */
                         unset( $_SESSION['delete'] );
+
+                        $update = isset( $_SESSION['update'] ) ? $_SESSION['update'] : '';
+                        echo $update;
+
+                        /**
+                         * Remove Session
+                         */
+                        print_r($update);
+                        unset($_SESSION['update']);
                    ?>
                    <br>
                    <br>
@@ -54,7 +63,7 @@
                                             <td><?php echo $fullname; ?></td>
                                             <td><?php echo $username; ?></td>
                                             <td>
-                                                <a href="#" class="btn-secondary">Update Admin</a>
+                                                <a href="<?php echo SITE_URL.'admin/update-admin.php?id='.$id; ?>" class="btn-secondary">Update Admin</a>
                                                 <a href="<?php echo SITE_URL.'admin/delete-admin.php?id='.$id; ?>" class="btn-danger">Delete Admin</a>
                                             <td/>
                                         </tr>
@@ -68,4 +77,4 @@
             </div>
         <!-- Main Content Section-->
         
-<?php include 'partials/footer.php'; ?>
+<?php include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/footer.php"); ?>

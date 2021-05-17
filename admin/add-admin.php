@@ -15,7 +15,7 @@
                 <tr>
                     <td>Full Name:</td>
                     <td>
-                        <input type="text" name="full_name" placeholder="Enter Your Name">
+                        <input type="text" name="full_name" placeholder="">
                     </td>
                 </tr>
 
