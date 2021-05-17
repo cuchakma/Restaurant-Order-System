@@ -8,12 +8,17 @@
                    <br>
 
                    <?php 
+                        $sl = 1;
                         $message = isset( $_SESSION['add'] ) ?  $_SESSION['add'] : '';
                         echo $message;
                         /**
                          * Remove Session
                          */
                         unset( $_SESSION['add'] );
+
+                        $delete = isset( $_SESSION['delete'] ) ? $_SESSION['delete'] : '';
+                        echo $delete;
+                        unset( $_SESSION['delete'] );
                    ?>
                    <br>
                    <br>
@@ -40,12 +45,12 @@
 
                                     ?>
                                          <tr>
-                                            <td><?php echo $id; ?></td>
+                                            <td><?php echo $sl++; ?></td>
                                             <td><?php echo $fullname; ?></td>
                                             <td><?php echo $username; ?></td>
                                             <td>
                                                 <a href="#" class="btn-secondary">Update Admin</a>
-                                                <a href="#" class="btn-danger">Delete Admin</a>
+                                                <a href="<?php echo SITE_URL.'admin/delete-admin.php?id='.$id; ?>" class="btn-danger">Delete Admin</a>
                                             <td/>
                                         </tr>
                                     <?php
