@@ -15,14 +15,14 @@
                 <tr>
                     <td>Full Name:</td>
                     <td>
-                        <input type="text" name="full_name" placeholder="">
+                        <input type="text" name="full_name" placeholder="You Fullname">
                     </td>
                 </tr>
 
                 <tr>
                     <td>Username: </td>
                     <td>
-                        <input type="text" name="username" placeholder="Your UserName">
+                        <input type="text" name="username" placeholder="Your Username">
                     </td>
                 </tr>
 

@@ -31,8 +31,32 @@
                         /**
                          * Remove Session
                          */
-                        print_r($update);
                         unset($_SESSION['update']);
+
+                        $user_found_or_not = isset( $_SESSION['user-not-found'] ) ?  $_SESSION['user-not-found'] : '';
+                        echo $user_found_or_not;
+
+                         /**
+                         * Remove Session
+                         */
+                        unset($_SESSION['user-not-found']);
+
+                        $password_not_match = isset( $_SESSION['pwd-not-match'] ) ?  $_SESSION['pwd-not-match'] : '';
+                        echo $password_not_match;
+
+                        /**
+                         * Remove Session
+                         */
+                        unset($_SESSION['pwd-not-match']);
+
+                        $update_password = isset( $_SESSION['update-password'] ) ? $_SESSION['update-password'] : '';
+                        echo $update_password;
+                        
+                        /**
+                         * Remove Session
+                         */
+                        unset($_SESSION['update-password']);
+
                    ?>
                    <br>
                    <br>
@@ -63,6 +87,7 @@
                                             <td><?php echo $fullname; ?></td>
                                             <td><?php echo $username; ?></td>
                                             <td>
+                                                <a href="<?php echo SITE_URL.'admin/update-password.php?id='.$id; ?>" class="btn-primary">Change Password</a>
                                                 <a href="<?php echo SITE_URL.'admin/update-admin.php?id='.$id; ?>" class="btn-secondary">Update Admin</a>
                                                 <a href="<?php echo SITE_URL.'admin/delete-admin.php?id='.$id; ?>" class="btn-danger">Delete Admin</a>
                                             <td/>
