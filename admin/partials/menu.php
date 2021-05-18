@@ -1,4 +1,8 @@
-<?php include( $_SERVER['DOCUMENT_ROOT']."/config/constants.php" );?>
+<?php 
+    include( $_SERVER['DOCUMENT_ROOT']."/config/constants.php" ); 
+    include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/login-check.php" ); 
+?>
+
 
 <html>
     <head>

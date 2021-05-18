@@ -13,6 +13,10 @@
                 $show_logged_message = isset( $_SESSION['login'] ) ?  $_SESSION['login'] : '';
                 echo $show_logged_message;
                 unset( $_SESSION['login'] );
+
+                $unauthorized_login_message = isset( $_SESSION['no-login-message'] ) ? $_SESSION['no-login-message'] : '';
+                echo $unauthorized_login_message;
+                unset( $_SESSION['no-login-message'] );
             ?>
             <br>
             <br>
@@ -56,6 +60,11 @@ if( isset($_POST['submit']) ) {
          * Logged In Message Stored Inside A Session Variable(Successful)
          */
         $_SESSION['login'] = '<div class="success">Logged In Successfully!</div>';
+
+        /**
+         * Check Wether A User Is Logged In Or Not
+         */
+        $_SESSION['user'] = $username;
 
         /**
          * Redirect After Logged In

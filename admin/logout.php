@@ -3,9 +3,9 @@
 include( $_SERVER['DOCUMENT_ROOT']."/config/constants.php" );
 
 /**
- * Destroy The Login Session
+ * Destroy The Login Session (SESSION USERNAME AS WELL)
  */
-session_destroy();
+session_destroy(); 
 
  /**
   * Redirect To Login Page
