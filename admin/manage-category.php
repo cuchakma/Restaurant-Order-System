@@ -9,6 +9,14 @@
             $add_category = isset( $_SESSION['add'] ) ? $_SESSION['add'] : '';
             echo $add_category;
             unset( $_SESSION['add'] );
+
+            $remove_category_image_failed = isset( $_SESSION['remove'] ) ?  $_SESSION['remove'] : '';
+            echo $remove_category_image_failed;
+            unset( $_SESSION['remove'] );
+
+            $remove_category = isset( $_SESSION['delete-category'] ) ?  $_SESSION['delete-category'] : '';
+            echo $remove_category;
+            unset( $_SESSION['delete-category'] );
         ?>
         <br>
             <a href="<?php echo SITE_URL.'admin/add-category.php' ?>" class="btn-primary">Add Category</a>
@@ -16,7 +24,7 @@
 
         <table class="tbl-full">
             <tr>
-                <th>S.N</th>
+                <th>S/N</th>
                 <th>Title</th>
                 <th>Image</th>
                 <th>Featured</th>
