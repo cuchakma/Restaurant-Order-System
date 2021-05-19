@@ -17,6 +17,10 @@
             $remove_category = isset( $_SESSION['delete-category'] ) ?  $_SESSION['delete-category'] : '';
             echo $remove_category;
             unset( $_SESSION['delete-category'] );
+
+            $no_catgeory = isset( $_SESSION['no-category-found'] ) ?  $_SESSION['no-category-found'] : '';
+            echo $no_catgeory;
+            unset( $_SESSION['no-category-found'] );
         ?>
         <br>
             <a href="<?php echo SITE_URL.'admin/add-category.php' ?>" class="btn-primary">Add Category</a>
@@ -54,7 +58,7 @@
                                 <td><?php echo $featured; ?></td>
                                 <td><?php echo $active; ?></td>
                                 <td>
-                                    <a href="#" class="btn-secondary">Update Category</a>
+                                    <a href="<?php echo SITE_URL.'admin/update-category.php?id='.$id; ?>" class="btn-secondary">Update Category</a>
                                     <a href="<?php echo SITE_URL.'admin/delete-category.php?id='.$id.'&image_name='.$rows['image_name'] ?>" class="btn-danger">Delete Category</a>
                                 </td>
                             </tr>
