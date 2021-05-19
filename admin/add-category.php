@@ -64,6 +64,9 @@
                     $featured          = isset( $_POST['featured'] ) ? $_POST['featured'] : 'No';
                     $active            = isset( $_POST['active'] ) ? $_POST['active'] : 'No';
                     $image_name        = isset( $_FILES['image']['name'] ) ? $_FILES['image']['name'] : '';
+                    $first_value       = explode( '.', $image_name )[0];
+                    $ext               = end ( explode ( '.',$image_name ) );
+                    $image_name        = $first_value."_".rand(000, 999).".".$ext;
                     $image_source_path = isset( $_FILES['image']['tmp_name'] ) ? $_FILES['image']['tmp_name'] : '';
                     $destination_path  = $_SERVER['DOCUMENT_ROOT']."/images/category/".$image_name;
                     $upload            = ( isset( $image_name ) && isset( $image_source_path ) && isset( $destination_path ) ) ? move_uploaded_file( $image_source_path, $destination_path ) : '';
