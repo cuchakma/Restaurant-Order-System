@@ -1,1 +1,3 @@
 THIS PROJECT IS BEING UPDATED DAILY AFTER COMPLETING THIS PROJECT THIS README WILL BE UPDATED
+
+Contributor :- Tauseed Zaman(FrontEnd Section), Cupid Chakma(Backend Section)

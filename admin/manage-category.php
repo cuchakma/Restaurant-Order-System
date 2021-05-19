@@ -33,10 +33,11 @@
                 $count = mysqli_num_rows($result);
                 if( $count ) {
                     while( $rows = mysqli_fetch_assoc($result) ) {
-                        $title      = isset( $rows['title'] ) ? $rows['title'] : '';
-                        $image_name = !empty( $rows['image_name'] ) ? '<img src = '.SITE_URL.'images/category/'.$rows['image_name'].' width = 100px >' : ('<div class="error">No Image Available</div>');
-                        $featured   = isset( $rows['featured'] ) ? $rows['featured'] : '';
-                        $active     = isset( $rows['active'] ) ?  $rows['active'] : '';
+                        $id          = $rows['ID'];
+                        $title       = isset( $rows['title'] ) ? $rows['title'] : '';
+                        $image_name  = !empty( $rows['image_name'] ) ? '<img src = '.SITE_URL.'images/category/'.$rows['image_name'].' width = 100px >' : ('<div class="error">No Image Available</div>');
+                        $featured    = isset( $rows['featured'] ) ? $rows['featured'] : '';
+                        $active      = isset( $rows['active'] ) ?  $rows['active'] : '';
                         ?>  
                             <tr>
                                 <td><?php echo $sl++; ?></td>
@@ -46,7 +47,7 @@
                                 <td><?php echo $active; ?></td>
                                 <td>
                                     <a href="#" class="btn-secondary">Update Category</a>
-                                    <a href="#" class="btn-danger">Delete Category</a>
+                                    <a href="<?php echo SITE_URL.'admin/delete-category.php?id='.$id.'&image_name='.$rows['image_name'] ?>" class="btn-danger">Delete Category</a>
                                 </td>
                             </tr>
                         <?php   
