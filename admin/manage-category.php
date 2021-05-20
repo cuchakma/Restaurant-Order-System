@@ -21,6 +21,18 @@
             $no_catgeory = isset( $_SESSION['no-category-found'] ) ?  $_SESSION['no-category-found'] : '';
             echo $no_catgeory;
             unset( $_SESSION['no-category-found'] );
+
+            $update_category = isset( $_SESSION['update'] ) ?  $_SESSION['update'] : '';
+            echo $update_category;
+            unset( $_SESSION['update'] );
+
+            $upload_image_failed = isset( $_SESSION['upload'] ) ?  $_SESSION['upload'] : '';
+            echo $upload_image_failed;
+            unset( $_SESSION['upload'] );
+
+            $failed_to_remove_image_file = isset( $_SESSION['remove-failed'] ) ? $_SESSION['remove-failed'] : '';
+            echo $failed_to_remove_image_file;
+            unset( $_SESSION['remove-failed'] );
         ?>
         <br>
             <a href="<?php echo SITE_URL.'admin/add-category.php' ?>" class="btn-primary">Add Category</a>

@@ -1,4 +1,5 @@
 <?php include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/menu.php" ); ?>
+
 <div class="main-content">
     <div class="wrapper">
         <h1>Update Category</h1>
@@ -38,40 +39,121 @@
                 <tr>
                     <td>Current Image: </td>
                     <td>
-                        Image Will Be Displayed Here
+                        <?php 
+                            if( !empty( $image_name ) ) {
+                                echo '<img src='.SITE_URL.'/images/category/'.$image_name.' width=150px >';
+                            } else {
+                                echo '<div class="error">Image Not Added</div>';
+                            }
+                        ?>
                     </td>
                 </tr>
                 
                 <tr>
                     <td>New Image: </td>
                     <td>
-                        <input type="file" name="image">
+                        <input type="file" name="new_image">
                     </td>
                 </tr>
 
                 <tr>
                     <td>Featured: </td>
                     <td>
-                        <input type="radio" name="featured" value="yes">Yes
-                        <input type="radio" name="featured" value="no">No
+                        <input type="radio" name="featured" value="yes" <?php if( $featured === 'yes'){ echo "checked"; } ?>>Yes
+                        <input type="radio" name="featured" value="no" <?php if( $featured === 'no'){ echo "checked"; } ?>>No
                     </td>
                 </tr>
 
                 <tr>
                     <td>Active: </td>
                     <td>
-                        <input type="radio" name="active" value="yes">Yes
-                        <input type="radio" name="active" value="no">No
+                        <input type="radio" name="active" value="yes" <?php if( $active === 'yes'){ echo "checked"; } ?>>Yes
+                        <input type="radio" name="active" value="no" <?php if( $featured === 'no'){ echo "checked"; } ?>>No
                     </td>
                 </tr>
 
                 <tr>
                     <td colspan="2">
+                        <input type="hidden" name="current_image" value="<?php echo $image_name; ?>">
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <input type="submit"  name="submit" value="Update Category" class="btn-secondary">
                     </td>
                 </tr>
             </table>
         </form>
+
+        <?php
+            if( isset( $_POST['submit'] ) ) {
+
+                $id         = isset( $_POST['id'] ) ? $_POST['id'] : '';
+                $title      = isset( $_POST['title'] ) ? $_POST['title'] : '';
+                $image_name = isset( $_POST['current_image'] ) ?  $_POST['current_image'] : '';
+                $featured   = isset( $_POST['featured'] ) ? $_POST['featured'] : '';
+                $active     = isset( $_POST['active'] ) ? $_POST['active'] : '';
+            
+                if( !empty( $_FILES['new_image']['name'] ) ) {
+
+                    if( !empty( $image_name ) ) {
+                        $remove_path = is_readable( $_SERVER['DOCUMENT_ROOT']."/images/category/".$image_name ) ? $_SERVER['DOCUMENT_ROOT']."/images/category/".$image_name : '';
+                    }
+
+                    if( $remove_path ) {
+
+                        $remove_current_image = unlink($remove_path);
+
+                        if( !$remove_current_image ) {
+                            $_SESSION['remove-failed'] = '<div class="error">Failed To Remove Current Image From The Root Folder</div>';
+                            header("location:".SITE_URL."admin/manage-category.php");
+                            die();
+                        }
+                    }
+
+                    if( $remove_current_image ) {
+                        $image_name        = $_FILES['new_image']['name'];
+                        $first_value       = explode( '.', $image_name )[0];
+                        $ext               = end ( explode ( '.',$image_name ) );
+                        $image_name        = $first_value."_".rand(000, 999).".".$ext;
+                        $image_source_path = isset( $_FILES['new_image']['tmp_name'] ) ? $_FILES['new_image']['tmp_name'] : '';
+                        $destination_path  = $_SERVER['DOCUMENT_ROOT']."/images/category/".$image_name;
+                        $upload            = ( isset( $image_name ) && isset( $image_source_path ) && isset( $destination_path ) ) ? move_uploaded_file( $image_source_path, $destination_path ) : '';
+                        
+                        if( !$upload ) {
+                            $_SESSION['upload'] = '<div class="error">Failed To Upload Image</div>';
+                            header("location:".SITE_URL."admin/manage-category.php");
+                            die();
+                        }
+                    } else {
+                        $image_name        = isset( $_FILES['new_image']['name'] ) ? $_FILES['new_image']['name'] : '';
+                        $first_value       = explode( '.', $image_name )[0];
+                        $ext               = end ( explode ( '.',$image_name ) );
+                        $image_name        = $first_value."_".rand(000, 999).".".$ext;
+                        $image_source_path = isset( $_FILES['new_image']['tmp_name'] ) ? $_FILES['new_image']['tmp_name'] : '';
+                        $destination_path  = $_SERVER['DOCUMENT_ROOT']."/images/category/".$image_name;
+                        $upload            = ( isset( $image_name ) && isset( $image_source_path ) && isset( $destination_path ) ) ? move_uploaded_file( $image_source_path, $destination_path ) : '';
+                        
+                        if( !$upload ) {
+                            $_SESSION['upload'] = '<div class="error">Failed To Upload Image</div>';
+                            header("location:".SITE_URL."admin/manage-category.php");
+                            die();
+                        }
+                    }
+                }
+
+
+
+                $sql = "UPDATE resto_category SET title = '{$title}', image_name = '{$image_name}', featured = '{$featured}', active = '{$active}' WHERE ID = {$id}";
+                $result = mysqli_query( $conn, $sql );
+
+                if( $result ) {
+                    $_SESSION['update'] = '<div class="success">Category Updated Successfully</div>';
+                } else {
+                    $_SESSION['update'] = '<div class="error">Failed To Update Category</div>';
+                }
+
+                header("location:".SITE_URL."admin/manage-category.php");
+            }
+        ?>
+
     </div>
 </div>
 <?php  include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/footer.php"); ?>
