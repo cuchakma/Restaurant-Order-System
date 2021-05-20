@@ -67,13 +67,14 @@ a:hover{
 .btn-right{
     float: right;
 }
+
 .btn-primary{
     background-color: #ff6b81;
     color: white;
     cursor: pointer;
 }
 .padding-9{
-    padding:5px 10px;
+    padding:6px 10px;
 }
 .btn-primary:hover{
     color: white;
@@ -91,6 +92,7 @@ h3{
 }
 .float-container{
     position: relative;
+
 }
 .float-text{
     position: absolute;
@@ -123,7 +125,6 @@ fieldset{
     padding: 1%;
     font-weight: bold;
 }
-
 
 /* CSS for Food SEarch Section */
 
@@ -207,14 +208,14 @@ fieldset{
 }
 /* for Order Section */
 .order{
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
 }
 .input-responsive{
     width: 96%;
-    padding: 1%;
+    padding: 2%;
     margin-bottom: 3%;
-    border: none;
+    border: 1px solid gray;
     border-radius: 5px;
     font-size: 1rem;
 }
@@ -263,7 +264,7 @@ fieldset{
     }
 
     .btn{
-        width: 91%;
+        width: 100%;
         padding: 2%;
     }
 
@@ -296,5 +297,8 @@ fieldset{
     }
     .order{
         width: 100%;
+    }
+    .btn-search{
+        width: 90%;
     }
 }
