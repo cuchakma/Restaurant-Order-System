@@ -21,7 +21,18 @@
 .img-curve{
     border-radius: 15px;
 }
-
+.zoom-in{
+    transition: transform .5s; 
+    width: 100%;
+    margin: 0;
+}
+.zoom-in:hover{
+    transform: scale(1.1);
+    color: black;
+    border-radius: 17px;
+    padding: 0;
+    box-shadow: 5px 10px 10px lightsteelblue;
+}
 .text-right{
     text-align: right;
 }
@@ -34,7 +45,6 @@
 .text-white{
     color: white;
 }
-
 .clearfix{
     clear: both;
     float: none;
@@ -54,15 +64,23 @@ a:hover{
     font-size: 1rem;
     border-radius: 5px;
 }
+.btn-right{
+    float: right;
+}
 .btn-primary{
     background-color: #ff6b81;
     color: white;
     cursor: pointer;
 }
+.padding-9{
+    padding:5px 10px;
+}
 .btn-primary:hover{
     color: white;
     background-color: #ff4757;
+    box-shadow: 3px 5px 10px yellowgreen;
 }
+
 h2{
     color: #2f3542;
     font-size: 2rem;
@@ -137,7 +155,6 @@ fieldset{
     margin: 2%;
 }
 
-
 /* CSS for Food Menu */
 .food-menu{
     background-color: #ececec;
@@ -150,6 +167,10 @@ fieldset{
     float: left;
     background-color: white;
     border-radius: 15px;
+}
+.food-menu-box:hover{
+    background-color: lightyellow;
+    box-shadow: 3px 6px 10px gray;
 }
 
 .food-menu-img{
@@ -181,7 +202,9 @@ fieldset{
     display: inline;
     padding: 1%;
 }
-
+.footer-align-inline{
+    display:list-item;
+}
 /* for Order Section */
 .order{
     width: 50%;
@@ -199,9 +222,27 @@ fieldset{
     margin-bottom: 1%; 
     font-weight: bold;
 }
+.shadow{
+    background-color: #ececec;
+    padding: 2% 4%;
+    box-shadow: 10px 10px 8px lightslategray;
+}
+.rounded{
+    border-radius: 5px;
+}
+.head-primary{
+    color: #ff4757
+}
+.bg-light{
+    background-color: whitesmoke;
+}
 
-
-
+.box-3-text{
+    color: white !important;
+}
+.box-3-text:hover{
+    color: cyan !important;
+}
 /* CSS for Mobile Size or Smaller Screen */
 
 @media only screen and (max-width:768px){
