@@ -68,7 +68,7 @@
                     <td>Active: </td>
                     <td>
                         <input type="radio" name="active" value="yes" <?php if( $active === 'yes'){ echo "checked"; } ?>>Yes
-                        <input type="radio" name="active" value="no" <?php if( $featured === 'no'){ echo "checked"; } ?>>No
+                        <input type="radio" name="active" value="no" <?php if(  $active === 'no'){ echo "checked"; } ?>>No
                     </td>
                 </tr>
 
@@ -90,13 +90,22 @@
                 $image_name = isset( $_POST['current_image'] ) ?  $_POST['current_image'] : '';
                 $featured   = isset( $_POST['featured'] ) ? $_POST['featured'] : '';
                 $active     = isset( $_POST['active'] ) ? $_POST['active'] : '';
-            
+                
+                /**
+                 * Check If The New Image Name Is Not Empty
+                 */
                 if( !empty( $_FILES['new_image']['name'] ) ) {
 
+                    /**
+                     * If Current Image File Is Readable
+                     */
                     if( !empty( $image_name ) ) {
                         $remove_path = is_readable( $_SERVER['DOCUMENT_ROOT']."/images/category/".$image_name ) ? $_SERVER['DOCUMENT_ROOT']."/images/category/".$image_name : '';
                     }
 
+                    /**
+                     * If Current Image File Exists/Readable Them Delete The Current File
+                     */
                     if( $remove_path ) {
 
                         $remove_current_image = unlink($remove_path);
@@ -108,6 +117,9 @@
                         }
                     }
 
+                    /**
+                     * If Current Image Is Deleted Then Add The Details Of The New Image File
+                     */
                     if( $remove_current_image ) {
                         $image_name        = $_FILES['new_image']['name'];
                         $first_value       = explode( '.', $image_name )[0];
