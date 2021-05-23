@@ -1,6 +1,6 @@
 <?php
 
-include( $_SERVER['DOCUMENT_ROOT']."/config/constants.php" );
+include(  "../config/constants.php" );
 
 /**
  * Destroy The Login Session (SESSION USERNAME AS WELL)

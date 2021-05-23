@@ -1,4 +1,4 @@
-<?php include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/menu.php" ); ?>
+<?php include(  "../admin/partials/menu.php" ); ?>
 
 <div class="main-content">
     <div class="wrapper">
@@ -66,4 +66,4 @@
     }
 ?>
 
-<?php include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/footer.php"); ?>
+<?php include(  "../admin/partials/footer.php"); ?>

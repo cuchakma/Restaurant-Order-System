@@ -6,12 +6,12 @@
         <br /><br /><br />
 
         <table class="tbl-full">
-            <tr>
+            <thead>
                 <th>S.N</th>
                 <th>Full Name</th>
                 <th>Username</th>
                 <th>Actions</th>
-            </tr>
+            </thead>
             <tr>
                 <td>Dummy 1</td>
                 <td>Dummy 2</td>

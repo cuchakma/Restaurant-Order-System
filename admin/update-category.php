@@ -1,4 +1,4 @@
-<?php include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/menu.php" ); ?>
+<?php include(  "../admin/partials/menu.php" ); ?>
 <div class="main-content">
     <div class="wrapper">
         <h1>Update Category</h1>
@@ -74,4 +74,4 @@
         </form>
     </div>
 </div>
-<?php  include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/footer.php"); ?>
+<?php  include(  "../admin/partials/footer.php"); ?>

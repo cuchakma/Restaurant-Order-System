@@ -1,4 +1,4 @@
-<?php include $_SERVER['DOCUMENT_ROOT']."/config/constants.php"; ?>
+<?php include "../config/constants.php"; ?>
 
 <html>
     <head>
@@ -20,14 +20,14 @@
             ?>
             <br>
             <br>
-                <form action="" method="POST" class="text-center">
-                    Username:<br>
-                    <input type="text" name="username" placeholder="Enter Username"><br><br>
+                <form action="" method="POST" class="" style="">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" placeholder="Enter Username" class="form-input"><br><br>
 
-                    Password: <br>
-                    <input type="password" name="password" placeholder="Enter Password"><br><br>
-                    <input type="submit" name="submit" value="Login" class="btn-primary">
-                </form>
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" placeholder="Enter Password" class="form-input"><br><br>
+                    <input type="submit" name="submit" value="Login" class="btn-submit">
+                </form><br><br>
             <p class="text-center">Created By <a href="#">Cupid Chakma</a></p>
         </div>
     </body>
@@ -41,12 +41,14 @@ if( isset($_POST['submit']) ) {
      * Username And Password Datas
      */
     $username = isset( $_POST['username'] ) ? $_POST['username'] : '';
-    $password = isset( $_POST['password'] ) ? $_POST['password'] : '';
+    $password = isset( $_POST['password'] ) ? md5($_POST['password']) : '';
 
     /**
      * Check For Existance Of The Datas In The Database
      */
     $sql = "SELECT * FROM resto_admin WHERE user_name = '{$username}' AND password = '{$password}' ";
+    // echo $sql;
+    // die();
     
     /**
      * Insert And Perform SQL Query In Database And Get The Results 
@@ -69,7 +71,7 @@ if( isset($_POST['submit']) ) {
         /**
          * Redirect After Logged In
          */
-        header("location:".SITE_URL."admin/");
+        header("location: http://localhost/Restaurant-Order-System/");
 
     } else {  
 
@@ -81,6 +83,6 @@ if( isset($_POST['submit']) ) {
         /**
          * Redirect After Logged In
          */
-        header("location:".SITE_URL."admin/login.php");
+        header("location:http://localhost/Restaurant-Order-System/admin/login.php");
     }
 }

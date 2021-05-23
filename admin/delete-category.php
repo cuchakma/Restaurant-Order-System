@@ -1,6 +1,6 @@
 <?php
 
-include( $_SERVER['DOCUMENT_ROOT']."/config/constants.php" ); 
+include(  "/config/constants.php" ); 
 
 if( !empty( $_GET['image_name'] ) && isset( $_GET['id'] ) ) {
 
@@ -12,7 +12,7 @@ if( !empty( $_GET['image_name'] ) && isset( $_GET['id'] ) ) {
      */
     if( !empty( $image_name ) ) {
         
-        $path = $_SERVER['DOCUMENT_ROOT']."/images/category/".$image_name;
+        $path =  "/images/category/".$image_name;
         $remove = unlink($path);
 
         /**

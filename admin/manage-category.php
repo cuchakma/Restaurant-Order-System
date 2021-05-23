@@ -1,4 +1,4 @@
-<?php include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/menu.php" ); ?>
+<?php include( "../admin/partials/menu.php" ); ?>
 
 <div class="main-content">
     <div class="wrapper">
@@ -27,14 +27,14 @@
         <br /><br /><br />
 
         <table class="tbl-full">
-            <tr>
+            <thead>
                 <th>S/N</th>
                 <th>Title</th>
                 <th>Image</th>
                 <th>Featured</th>
                 <th>Active</th>
                 <th>Actions</th>
-            </tr>
+            </thead>
 
             <?php
                 /**
@@ -76,4 +76,4 @@
     </div>
 </div>
 
-<?php  include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/footer.php"); ?>
+<?php  include( "../admin/partials/footer.php"); ?>

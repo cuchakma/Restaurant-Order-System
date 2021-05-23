@@ -1,6 +1,6 @@
 <?php 
-    include( $_SERVER['DOCUMENT_ROOT']."/config/constants.php" ); 
-    include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/login-check.php" ); 
+    include("../config/constants.php" ); 
+    include("../admin/partials/login-check.php" ); 
 ?>
 
 
@@ -8,6 +8,7 @@
     <head>
         <title>Food Order Management Website</title>
         <link rel="stylesheet" href="../css/admin.css">
+
     </head>
     <body>
         <!-- Menu Section-->

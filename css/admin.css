@@ -21,19 +21,32 @@
 
 .tbl-full{
     width: 100%;
+    padding: 0px;
+    margin: 0;
+    border: 1px solid gray;
+}
+.tbl-full thead{
+    background-color: #2ed573;
+    padding: 2px 10px;
+}
+.tbl-full thead th{
+    border: 1px solid #2ed573; 
+    padding: 0.5rem;
+    text-align: center;
 }
 .tbl-30{
     width: 30%;
 }
-
-table tr th{
-    border-bottom: 1px solid black;
-    padding: 1%;
-    text-align: left;
+table tr{
+    width: 100%;
+    align-items: center ;
 }
-
+table tr:hover{
+    background-color: lightgray;
+}
 table tr td{
-    padding: 1%;
+    text-align: center;
+    overflow-x: auto;
 }
 
 .btn-primary{
@@ -124,4 +137,37 @@ table tr td{
     width: 20%;
     margin: 10% auto;
     padding: 2%;
+    box-shadow: 2px 4px 2px gray;
+}
+.form-input{
+    padding: 5px;
+    font-size:1rem;
+    width:100%;
+    margin-top: 2px;
+    border-radius: 2px;
+    border: 1px solid gray;
+}
+.form-input:focus{
+    box-shadow: 3px 5px 3px lightgray;
+}
+.form-label{
+    margin-bottom: 15px;
+    color: blue;
+}
+.btn-submit{
+    padding: 8px 16px;
+    background-color: greenyellow;
+    border-radius: 2px;
+    width: 100%;
+    border: 1px solid gray;
+    font-size: 1rem;
+}
+.btn-submit:hover{
+    background-color: lightgreen;
+    color: darkblue;
+    box-shadow: 2px 2px 2px gray;
+}
+.form-radio{
+    padding: 2px;
+    margin: 2 10px;
 }

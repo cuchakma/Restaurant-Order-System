@@ -1,9 +1,14 @@
-<?php include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/menu.php" ); ?>
+<?php include( "../admin/partials/menu.php" ); ?>
 
     <div class="main-content">
         <div class="wrapper">
-            <h1>Add Category</h1>
+            <h1 style="text-align:center;color:darkgreen">Add New Category</h1>
             <br><br>
+            <style>
+                .form-radio{
+                    margin: 2 10px;
+                }
+            </style>
             <?php
                 $add_category = isset( $_SESSION['add'] ) ? $_SESSION['add'] : '';
                 echo $add_category;
@@ -14,45 +19,26 @@
                 unset($_SESSION['upload']);
             ?>
             <!-- Add Category Form -->
+            <div class="login" style="width: 50%;margin-top:2%">
             <form action="" method="POST" enctype="multipart/form-data">
-                <table class="tbl-30">
-                    <tr>
-                        <td>Title: </td>
-                        <td>
-                            <input type="text" name="title" placeholder="Category Title">
-                        </td>
-                    </tr>
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="title" placeholder="Enter Category Title" class="form-input"><br><br>
 
-                    <tr>
-                        <td>Select Image: </td>
-                        <td>
-                            <input type="file" name="image">
-                        </td>
-                    </tr>
+            <label for="Image" class="form-label">Choose Image</label>
+            <input type="file" style="background-color: white;"  name="image"  class="form-input"><br><br>
 
-                    <tr>
-                        <td>Featured: </td>
-                        <td>
-                            <input type="radio" name="featured" value="yes">Yes</input>
-                            <input type="radio" name="featured" value="no">No</input>
-                        </td>
-                    </tr>
 
-                    <tr>
-                        <td>Active: </td>
-                        <td>
-                            <input type="radio" name="active" value="yes">Yes</input>
-                            <input type="radio" name="active" value="no">No</input>
-                        </td>
-                    </tr>
+            <label for="featured" class="form-label">Featured</label><br>
+            <input type="radio" name="featured" value="yes" class="form-radio">Yes</input>
+            <input type="radio" name="featured" value="no" class="form-radio">No</input><br><br>
 
-                    <tr>
-                        <td colspan="2">
-                            <input type="submit"  name="submit" value="Add Category" class="btn-secondary">
-                        </td>
-                    </tr>
-                </table>
-            </form>
+            <label for="active" class="form-label">Active</label><br>
+            <input type="radio" name="active" value="yes" class="form-radio">Yes</input>
+            <input type="radio" name="active" value="no" class="form-radio">No</input><br><br>
+
+            <input type="submit" name="submit" value="Add Category" class="btn-submit">
+        </form><br><br>
+    </div>
 
             <?php
                 if( isset( $_POST['submit'] ) ) {
@@ -69,7 +55,7 @@
                         $ext               = end ( explode ( '.',$image_name ) );
                         $image_name        = $first_value."_".rand(000, 999).".".$ext;
                         $image_source_path = isset( $_FILES['image']['tmp_name'] ) ? $_FILES['image']['tmp_name'] : '';
-                        $destination_path  = $_SERVER['DOCUMENT_ROOT']."/images/category/".$image_name;
+                        $destination_path  = "/images/category/".$image_name;
                         $upload            = ( isset( $image_name ) && isset( $image_source_path ) && isset( $destination_path ) ) ? move_uploaded_file( $image_source_path, $destination_path ) : '';
                         if( !$upload ) {
                             $_SESSION['upload'] = '<div class="error">Failed To Upload Image</div>';
@@ -98,4 +84,4 @@
 
         </div>
     </div>
-<?php include( $_SERVER['DOCUMENT_ROOT']."/admin/partials/footer.php"); ?>
+<?php include( "../admin/partials/footer.php"); ?>
