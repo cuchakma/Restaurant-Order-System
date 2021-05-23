@@ -15,6 +15,26 @@
             $add_food = isset( $_SESSION['food-add'] ) ? $_SESSION['food-add'] : '';
             echo $add_food;
             unset( $_SESSION['food-add'] ); 
+
+            $delete_food = isset( $_SESSION['delete-food'] ) ?  $_SESSION['delete-food'] : '';
+            echo $delete_food;
+            unset( $_SESSION['delete-food'] );
+
+            $image_remove_failed = isset( $_SESSION['image-remove-failed'] ) ? $_SESSION['image-remove-failed'] : '';
+            echo $image_remove_failed;
+            unset( $_SESSION['image-remove-failed'] );
+
+            $food_delete = isset( $_SESSION['food-deleted'] ) ?  $_SESSION['food-deleted'] : '';
+            echo $food_delete;
+            unset( $_SESSION['food-deleted'] );
+
+            $update_image_failed = isset( $_SESSION['update-food-image-failed'] ) ?  $_SESSION['update-food-image-failed'] : '';
+            echo $update_image_failed;
+            unset( $_SESSION['update-food-image-failed'] );
+
+            $update_food = isset( $_SESSION['food-updated'] ) ?  $_SESSION['food-updated'] : '';
+            echo $update_food;
+            unset( $_SESSION['food-updated'] );
         ?>
         
         <table class="tbl-full">
@@ -33,7 +53,8 @@
                 $result = mysqli_query( $conn, $sql );
                 $rows = mysqli_num_rows($result);
                 if( $rows ) {
-                    while( $row = mysqli_fetch_assoc($result) ) {
+                    while( $row = mysqli_fetch_assoc( $result ) ) {
+                        $id          = isset( $row['id'] ) ? $row['id'] : '';
                         $title       = isset( $row['title'] ) ? $row['title'] : '';
                         $description = isset( $row['description'] ) ? $row['description'] : '';
                         $price       = isset( $row['price'] ) ? $row['price'] : '';
@@ -49,8 +70,8 @@
                                 <td><?php echo $featured; ?></td>
                                 <td><?php echo $active; ?></td>
                                 <td>
-                                    <a href="#" class="btn-secondary">Update Admin</a>
-                                    <a href="#" class="btn-danger">Delete Admin</a>
+                                    <a href=<?php echo SITE_URL.'admin/update-food.php?id='.$id; ?> class="btn-secondary">Update Food</a>
+                                    <a href=<?php echo SITE_URL.'admin/delete-food.php?id='.$id."&image_name=".$row['image_name']; ?> class="btn-danger">Delete Food</a>
                                 </td>
                             </tr>
                         <?php
