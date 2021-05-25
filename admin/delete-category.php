@@ -2,7 +2,7 @@
 
 include( $_SERVER['DOCUMENT_ROOT']."/config/constants.php" ); 
 
-if( !empty( $_GET['image_name'] ) && isset( $_GET['id'] ) ) {
+if( isset( $_GET['image_name'] ) && isset( $_GET['id'] ) ) {
 
     $id         = $_GET['id'];
     $image_name = $_GET['image_name'];

@@ -155,7 +155,7 @@
 
                 $sql = "UPDATE resto_category SET title = '{$title}', image_name = '{$image_name}', featured = '{$featured}', active = '{$active}' WHERE ID = {$id}";
                 $result = mysqli_query( $conn, $sql );
-
+            
                 if( $result ) {
                     $_SESSION['update'] = '<div class="success">Category Updated Successfully</div>';
                 } else {
