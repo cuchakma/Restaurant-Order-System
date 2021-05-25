@@ -10,13 +10,13 @@
                 $rows   = mysqli_num_rows($result);
                 if( $rows ) {
                     while( $row = mysqli_fetch_assoc( $result ) ) {
-                        $id         = $row['ID'];
-                        $title      = $row['title'];
+                        $id         = isset( $row['ID'] ) ? $row['ID'] : '';
+                        $title      = isset( $row['title'] ) ? $row['title']: '';
                         $image_name = isset( $row['image_name'] ) ? $row['image_name'] : '';
-                        $featured   = $row['featured'];
-                        $active     = $row['active']; 
+                        $featured   = isset( $row['featured'] ) ? $row['featured'] : '';
+                        $active     = isset( $row['active'] ) ? $row['active'] : ''; 
                         ?>
-                            <a href="category-foods.html">
+                            <a href="<?php echo SITE_URL.'category-foods.php?category_id='.$id; ?>">
                                 <div class="box-3 float-container">
                                     <?php
                                         if( !empty( $image_name ) ) {
@@ -24,7 +24,7 @@
                                                 <img src="<?php echo SITE_URL.'images/category/'.$image_name; ?>" alt="<?php echo $title; ?>" class="img-responsive img-curve">
                                             <?php
                                         } else {
-                                                echo '<div class="error">Image Not Found</div>';
+                                            echo '<div class="error">Image Not Found</div>';
                                         }
                                     ?>
                                     <h3 class="float-text text-white"><?php echo $title; ?></h3>
