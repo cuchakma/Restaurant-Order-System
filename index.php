@@ -12,7 +12,11 @@
         </div>
     </section>
     <!-- FOOD SEARCH Section Ends Here -->
-
+    <?php
+        $order = isset( $_SESSION['order-saved-in-database'] ) ?  $_SESSION['order-saved-in-database'] : '';
+        echo $order;
+        unset( $_SESSION['order-saved-in-database'] );
+    ?>
     <!-- Categories Section Starts Here -->
     <section class="categories">
         <div class="container">
@@ -93,7 +97,7 @@
                                             <?php echo $description; ?>
                                         </p>
                                         <br>
-                                        <a href="order.html" class="btn btn-primary">Order Now</a>
+                                        <a href="<?php echo SITE_URL.'order.php?food_id='.$id; ?>" class="btn btn-primary">Order Now</a>
                                     </div>
                                 </div>
                             <?php

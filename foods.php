@@ -53,7 +53,7 @@
                                     </p>
                                     <br>
 
-                                    <a href="#" class="btn btn-primary">Order Now</a>
+                                    <a href="<?php echo SITE_URL.'order.php?food_id='.$id; ?>" class="btn btn-primary">Order Now</a>
                                 </div>
                             </div>
                         <?php

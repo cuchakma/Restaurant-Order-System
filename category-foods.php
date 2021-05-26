@@ -32,6 +32,7 @@
                 $rows    = mysqli_num_rows($result2);
                 if( $rows ) {
                     while( $row2 = mysqli_fetch_assoc( $result2 ) ) {
+                        $id          = isset( $row2['id'] ) ? $row2['id'] : ''; 
                         $title       = isset( $row2['title'] ) ? $row2['title'] : '';
                         $description = isset( $row2['description'] ) ? $row2['description'] : '';
                         $price       = isset( $row2['price'] ) ? $row2['price'] : '';
@@ -58,7 +59,7 @@
                                     </p>
                                     <br>
 
-                                    <a href="#" class="btn btn-primary">Order Now</a>
+                                    <a href="<?php echo SITE_URL.'order.php?food_id='.$id; ?>" class="btn btn-primary">Order Now</a>
                                 </div>
                             </div>
                         <?php
