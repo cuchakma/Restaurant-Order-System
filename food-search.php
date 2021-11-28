@@ -16,7 +16,6 @@
     <section class="food-menu">
         <div class="container">
             <h2 class="text-center">Food Menu</h2>
-            <h2>Hello</h2>
             <?php
                 /**
                  * Get The Foods Based On Search
