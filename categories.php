@@ -1,4 +1,4 @@
-<?php include( $_SERVER['DOCUMENT_ROOT']."/partials-front/menu.php" ) ?>; 
+<?php include( $_SERVER['DOCUMENT_ROOT']."/partials-front/menu.php" )  ?>; 
 
     <!-- CAtegories Section Starts Here -->
     <section class="categories">
